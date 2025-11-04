@@ -1,0 +1,31 @@
+<div class="main">
+    <form [formGroup]="form">
+
+        <h1>Inscription</h1>
+
+        <div class="container-input-connexion">
+            <div class="form-input">
+                <label>
+                    Pseudo
+                </label>
+                <input type="pseudo" formControlName="pseudo">
+            </div>
+            <div class="form-input">
+                <label>Password</label>
+                <input type="text" formControlName="password">
+            </div>
+        </div>
+
+
+        <div class="container-btn">
+            <ul class="list-btn">
+                <li>
+                    <button class="btn" (click)="enregistrerUser()">
+                        S'inscrire
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+    </form>
+</div>
