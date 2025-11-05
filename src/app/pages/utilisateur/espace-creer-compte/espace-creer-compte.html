@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="container-creer-moncompte">
+        <form [formGroup]="form">
+            <h1>Creer mon compte</h1>
+            <div class="button">
+                <button type="button" class="btn" (click)="setGenre('1')"
+                    [class.active]="form.get('genre')?.value === '1'">Monsieur</button>
+                <button class="btn" type="button" (click)="setGenre('2')"
+                    [class.active]="form.get('genre')?.value === '2'">Madame</button>
+                <button class="btn" type="button" (click)="setGenre('3')"
+                    [class.active]="form.get('genre')?.value === '3'">Non-genré</button>
+            </div>
+            <div class="form-pseudo">
+                <label>Pseudo</label>
+                <input type="text" formControlName="pseudo">
+            </div>
+
+            <div class="container-btn">
+                <ul class="list-btn">
+                    <li>
+                        <button type="button" class="btn" (click)="modifierUtilisateur()">
+                            Valider
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+
+        </form>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
