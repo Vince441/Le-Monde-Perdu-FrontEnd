@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/utilisateur.model';
+import { UserDto } from '../../models/utilisateur.model';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
 
 @Component({
   selector: 'app-accueil',
@@ -16,10 +16,13 @@ import { BehaviorSubject } from 'rxjs';
 export class Accueil {
 
   form!: FormGroup
-  user!: User;
+  userDto!: UserDto;
   isActive: boolean = false;
   private userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
+  pseudo!: string;
+  userEmail: string | undefined;
+  userId: string | undefined;
 
   constructor(
     private readonly userService: UserService,
@@ -30,11 +33,13 @@ export class Accueil {
   ) {
 
     this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['vv@mail.fr', Validators.required],
+      password: ['aaaaaaaaaaaaA1!', Validators.required]
     });
 
   }
+
+
 
 
 
@@ -67,12 +72,40 @@ export class Accueil {
       this.authService.login(credentials).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.token);
-          this.userSubject.next({ email: res.email });
-          this.router.navigate(['/espace-utilisateur']);
+          console.warn('res', res);
+
+          const user = res.userDto;
+
+          const pseudo = res.userDto.pseudo;
+
+          if (user) {
+            this.userEmail = user.email;
+            this.userId = user.idUser;
+            console.log("Utilisateur connecté :", this.userEmail, this.userId);
+
+            if (pseudo) {
+              this.pageEspaceUtilisateur()
+            } else {
+              this.pageCreationPseudo()
+            }
+          } else {
+            console.warn("⚠️ Aucun user retourné dans la réponse", res);
+          }
+
         },
+
         error: (err) => console.error('Erreur login', err)
       })
     }
+  }
+
+  pageEspaceUtilisateur() {
+    this.router.navigate(['/espace-utilisateur'])
+  }
+
+  pageCreationPseudo() {
+    this.router.navigate(['/creer-mon-compte'])
+
   }
 
   itIsActive() {

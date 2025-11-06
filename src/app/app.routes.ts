@@ -7,9 +7,14 @@ export const routes: Routes = [
     loadComponent : () => import('./pages/accueil/accueil').then(m => m.Accueil)
 },
 {
+    path:'creer-mon-compte',
+    loadComponent : () => import('./pages/utilisateur/espace-creer-compte/espace-creer-compte').then(m => m.EspaceCreerCompte),
+    canActivate: [authGuard]
+},
+{
     path:'espace-utilisateur',
     loadComponent : () => import('./pages/utilisateur/espace-utilisateur/espace-utilisateur').then(m => m.EspaceUtilisateur),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
 },{
     path:'',
     redirectTo: 'accueil',

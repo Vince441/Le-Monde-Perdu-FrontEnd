@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../models/utilisateur.model';
+import { UserDto } from '../models/utilisateur.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,8 +14,15 @@ private FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
 
 constructor(private http: HttpClient){}
 
-postUser(user:User): Observable<User>{
-  return this.http.post<User>(this.FINAL_API, user);
+
+
+
+postUser(userDto:UserDto): Observable<UserDto>{
+  return this.http.post<UserDto>(this.FINAL_API, userDto);
+}
+
+patchUser(id: string, update: Partial<UserDto>): Observable<UserDto> {
+  return this.http.patch<UserDto>(`${this.FINAL_API}/${id}/update`, update);
 }
 
 

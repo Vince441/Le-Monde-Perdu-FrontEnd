@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/utilisateur.model';
+import { UserDto } from '../../../models/utilisateur.model';
 
 
 @Component({
@@ -16,9 +16,9 @@ import { User } from '../../../models/utilisateur.model';
 export class EspaceCreerCompte implements OnInit {
 
   form!: FormGroup
-  user: User | null = null;
+  userDto: UserDto | null = null;
   idUser! : '';
-   private userSubject = new BehaviorSubject<User | null>(null);
+   private userSubject = new BehaviorSubject<UserDto | null>(null);
   user$ = this.userSubject.asObservable();
 
 
@@ -39,14 +39,17 @@ export class EspaceCreerCompte implements OnInit {
 
 
 
-  ngOnInit() {
-    this.authService.user$.subscribe(user => {
-      console.warn("User connecté :", user.idUser);
-      this.idUser = user.idUser
+ngOnInit() {
+  this.authService.user$.subscribe(userDto => {
+    if (userDto) {
+      console.warn("User connecté :", userDto.idUser);
+      this.idUser = userDto.idUser;
       console.warn(this.idUser);
-      
-    })
-  }
+    } else {
+      console.warn("Aucun user connecté");
+    }
+  });
+}
 
 
   setGenre(value: string) {
@@ -62,7 +65,7 @@ modifierUtilisateur() {
     return;
   }
 
-  const update: Partial<User> = {
+  const update: Partial<UserDto> = {
     pseudo: this.form.get('pseudo')?.value,
     genre: this.form.get('genre')?.value
   };
