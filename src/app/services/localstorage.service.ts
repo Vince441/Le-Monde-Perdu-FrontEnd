@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
 
-  constructor() {}
+  constructor() { }
 
   // Sauvegarder une valeur
   setItem(key: string, value: string): void {

@@ -28,7 +28,7 @@ export class Accueil {
     private readonly userService: UserService,
     private readonly fb: FormBuilder,
     private readonly router: Router,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
 
   ) {
 
@@ -49,8 +49,7 @@ export class Accueil {
       const user = this.form.value;
 
       this.userService.postUser(user).subscribe({
-        next: (response) => {
-          console.warn("Utilisateur enregistré ✅", response);
+        next: () => {
           this.isActive = true;
         },
         error: (err) => {
@@ -71,8 +70,7 @@ export class Accueil {
 
       this.authService.login(credentials).subscribe({
         next: (res) => {
-          localStorage.setItem('token', res.token);
-          console.warn('res', res);
+
 
           const user = res.userDto;
 
