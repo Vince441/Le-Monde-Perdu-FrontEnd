@@ -1,31 +1,80 @@
 <div class="main">
-    <form [formGroup]="form">
+    <div class="container-form">
+        @if(!isActive){
+        <form [formGroup]="form">
 
-        <h1>Inscription</h1>
+            <h1>INSCRIPTION</h1>
 
-        <div class="container-input-connexion">
-            <div class="form-input">
-                <label>
-                    Pseudo
-                </label>
-                <input type="pseudo" formControlName="pseudo">
+            <div class="container-input-connexion">
+                <div class="form-input">
+                    <label>
+                        Email
+                    </label>
+                    <input type="email" formControlName="email">
+                </div>
+                <div class="form-input">
+                    <label>Password</label>
+                    <input type="text" formControlName="password">
+                </div>
             </div>
-            <div class="form-input">
-                <label>Password</label>
-                <input type="text" formControlName="password">
+
+
+            <div class="container-btn">
+                <ul class="list-btn">
+                    <li>
+                        <button class="btn" (click)="enregistrerUser()">
+                            S'inscrire
+                        </button>
+                    </li>
+                </ul>
             </div>
+
+        </form>
+        } @else{
+        <form [formGroup]="form" [class.active]="isActive">
+
+            <h1>CONNEXION</h1>
+
+            <div class="container-input-connexion">
+                <div class="form-input">
+                    <label>
+                        email
+                    </label>
+                    <input type="email" formControlName="email">
+                </div>
+                <div class="form-input">
+                    <label>Password</label>
+                    <input type="text" formControlName="password">
+                </div>
+            </div>
+
+
+            <div class="container-btn">
+                <ul class="list-btn">
+                    <li>
+                        <button class="btn" (click)="connexion()">
+                            Se connecter
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </form>
+
+        }
+
+        @if(!isActive){
+        <div class="connexion-wrapper">
+            <button class="connexion" (click)="itIsActive()">
+                <h1>CONNEXION</h1>
+            </button>
         </div>
-
-
-        <div class="container-btn">
-            <ul class="list-btn">
-                <li>
-                    <button class="btn" (click)="enregistrerUser()">
-                        S'inscrire
-                    </button>
-                </li>
-            </ul>
+        }@else{
+        <div class="connexion-wrapper" [class.active]="isActive">
+            <button class="connexion" (click)="itIsActive()">
+                <h1>INSCRIPTION</h1>
+            </button>
         </div>
-
-    </form>
+        }
+    </div>
 </div>

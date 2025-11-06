@@ -1,24 +1,59 @@
-.main {
-
-    background-color: var(--primary-color);
-    height: 100vh;
+.container-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.44);
+    border-radius: 10px 10px 10px 10px;
 
     form {
         width: 400px;
         height: 600px;
         background-color: var(--secondary-color);
-        border-radius: 10px;
+        border-radius: 10px 0px 0px 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
         row-gap: 20px;
+        animation: transition 1.5s ease-in-out;
+
+        &.active {
+            background-color: var(--white);
+            animation: transition 1.5s ease-in-out;
+
+            h1 {
+                color: var(--secondary-color);
+            }
+
+            .container-input-connexion {
+                .form-input {
+                    label {
+                        color: var(--secondary-color);
+                    }
+
+                    input {
+                        box-shadow: 0px 3px 0px 0px #d4d4d4f1;
+                        background-color: var(--white);
+                    }
+                }
+            }
+
+            label {
+                color: var(--secondary-color);
+            }
+        }
+
+        @keyframes transition {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+
+        }
+
 
         h1 {
             font-size: 4rem;
-            color: rgba(255, 255, 255, 0.671);
+            color: var(--white);
         }
 
         .container-input-connexion {
@@ -35,16 +70,16 @@
                 color: white;
                 row-gap: 10px;
 
-
                 label {
                     font-size: 2rem;
-                     color: rgba(255, 255, 255, 0.671);
+                    color: var(--white);
                 }
 
                 input {
                     height: 20px;
                     border-radius: 0px;
-                    box-shadow: 0px 3px 0px 0px #96763b;
+                    box-shadow: 0px 3px 0px 0px var(--white);
+                    background-color: #d4d4d4f1;
                     border: 0;
                     padding: 5px;
 
@@ -57,27 +92,72 @@
 
         .container-btn {
             width: 80%;
-            padding: 30px;
+            padding: 3rem;
+
 
             .list-btn {
                 padding: 0;
+                width: 100%;
 
                 li {
+                    list-style: none;
+                    display: flex;
+                    justify-content: center;
+
+
                     .btn {
-                        padding: 10px;
-                        width: 50%;
+                        padding: 1.5rem;
                         border-radius: 0px;
                         outline: none;
                         border: none;
                         transition: all 0.2s ease;
+                        width: 60%;
+                        border: 1px solid rgba(0, 0, 0, 0.247);
 
                         &:active {
                             background-color: var(--secondary-color);
                             color: white;
                         }
-
                     }
                 }
+            }
+        }
+    }
+
+    .connexion-wrapper {
+        height: 600px;
+        width: 100px;
+        border-radius: 0 10px 10px 0;
+        background-color: var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: transition 0.8s ease-in-out;
+
+        &.active {
+            background-color: var(--secondary-color);
+            animation: transition 0.8s ease-in-out;
+
+            .connexion {
+                h1 {
+                    color: var(--white)
+                }
+            }
+        }
+
+        .connexion {
+            width: 300px;
+            background: transparent;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(90deg);
+
+            h1 {
+                font-size: 4rem;
+                color: var(--secondary-color);
+                cursor: pointer;
             }
         }
     }
