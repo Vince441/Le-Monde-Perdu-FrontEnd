@@ -17,8 +17,8 @@ export class EspaceCreerCompte implements OnInit {
 
   form!: FormGroup
   userDto: UserDto | null = null;
-  idUser! : '';
-   private userSubject = new BehaviorSubject<UserDto | null>(null);
+  idUser!: '';
+  private userSubject = new BehaviorSubject<UserDto | null>(null);
   user$ = this.userSubject.asObservable();
 
 
@@ -39,17 +39,20 @@ export class EspaceCreerCompte implements OnInit {
 
 
 
-ngOnInit() {
-  this.authService.user$.subscribe(userDto => {
-    if (userDto) {
-      console.warn("User connecté :", userDto.idUser);
-      this.idUser = userDto.idUser;
-      console.warn(this.idUser);
-    } else {
-      console.warn("Aucun user connecté");
-    }
-  });
-}
+  ngOnInit() {
+    this.authService.user$.subscribe(userDto => {
+      if (userDto) {
+
+        // this.idUser = userDto.idUser;
+
+        this.authService.idUser
+
+
+      } else {
+        console.warn("Aucun user connecté");
+      }
+    });
+  }
 
 
   setGenre(value: string) {
@@ -57,28 +60,28 @@ ngOnInit() {
   }
 
 
-modifierUtilisateur() {
-  console.warn(this.idUser);
-  
-  if (!this.idUser) {
-    console.error('Impossible de modifier : id utilisateur manquant');
-    return;
-  }
+  modifierUtilisateur() {
+    console.warn(this.idUser);
 
-  const update: Partial<UserDto> = {
-    pseudo: this.form.get('pseudo')?.value,
-    genre: this.form.get('genre')?.value
-  };
-
-  this.userService.patchUser(this.idUser, update).subscribe({
-    next: (updatedUser) => {
-      console.log('Utilisateur modifié avec succès :', updatedUser);
-      // Mettre à jour le BehaviorSubject global si nécessaire
-      this.userSubject.next(updatedUser);
-    },
-    error: (err) => {
-      console.error('Erreur lors de la modification de l\'utilisateur :', err);
+    if (!this.idUser) {
+      console.error('Impossible de modifier : id utilisateur manquant');
+      return;
     }
-  });
-}
+
+    const update: Partial<UserDto> = {
+      pseudo: this.form.get('pseudo')?.value,
+      genre: this.form.get('genre')?.value
+    };
+
+    this.userService.patchUser(this.idUser, update).subscribe({
+      next: (updatedUser) => {
+        console.log('Utilisateur modifié avec succès :', updatedUser);
+        // Mettre à jour le BehaviorSubject global si nécessaire
+        this.userSubject.next(updatedUser);
+      },
+      error: (err) => {
+        console.error('Erreur lors de la modification de l\'utilisateur :', err);
+      }
+    });
+  }
 }
