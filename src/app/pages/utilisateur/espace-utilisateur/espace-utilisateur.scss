@@ -1,0 +1,49 @@
+.container-mon-espace {
+    width: 1000px;
+
+    border: 1px solid white;
+    padding: 0 3rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+
+    h1 {
+        font-size: 3rem;
+        color: var(--white);
+        margin: 0;
+        padding: 5rem 0 5rem 0;
+    }
+
+
+
+    ul {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 0 0 5rem 0;
+
+        li {
+            list-style-type: none;
+            border: 1px solid var(--white);
+            width: 45%;
+            padding: 2rem;
+            cursor: pointer;
+
+            a {
+                text-decoration: none;
+
+                p {
+                    font-size: 1.5rem;
+                    color: var(--white);
+                }
+            }
+        }
+    }
+
+}
