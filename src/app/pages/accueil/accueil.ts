@@ -33,8 +33,8 @@ export class Accueil {
   ) {
 
     this.form = this.fb.group({
-      email: ['vv@mail.fr', Validators.required],
-      password: ['aaaaaaaaaaaaA1!', Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
   }

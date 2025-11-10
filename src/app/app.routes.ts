@@ -14,7 +14,7 @@ export const routes: Routes = [
     {
         path: 'espace-utilisateur',
         loadComponent: () => import('./pages/utilisateur/espace-utilisateur/espace-utilisateur').then(m => m.EspaceUtilisateur),
-        canActivate: [authGuard]
+        // canActivate: [authGuard]
     }, {
         path: '',
         redirectTo: 'accueil',
