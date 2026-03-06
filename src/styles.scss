@@ -13,4 +13,15 @@ body, html{
     --secondary-color: #111111;
     --padding : 10px;
     --margin : 10px;
+    --white: white;
+}
+
+
+.main{
+    background-color: var(--primary-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
