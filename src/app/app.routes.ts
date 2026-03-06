@@ -15,9 +15,17 @@ export const routes: Routes = [
         path: 'espace-utilisateur',
         loadComponent: () => import('./pages/utilisateur/espace-utilisateur/espace-utilisateur').then(m => m.EspaceUtilisateur),
         // canActivate: [authGuard]
-    }, {
+    },
+    {
+        path: 'mes-dinosaures',
+        loadComponent: () => import('./pages/utilisateur/mes-dinosaures/mes-dinosaures').then(m => m.MesDinosaures),
+        // canActivate: [authGuard]
+    }, 
+    {
         path: '',
         redirectTo: 'accueil',
         pathMatch: 'full'
     }
 ];
+
+
