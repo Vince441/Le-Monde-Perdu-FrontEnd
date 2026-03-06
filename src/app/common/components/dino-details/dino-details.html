@@ -1,0 +1,17 @@
+<div class="main">
+    <div class="container-dino-detail">
+        @if(dino){
+        <div class="bloc-image">
+            <img src="{{dino.url}}" alt="{{dino.nom}}">
+        </div>
+        <div class="bloc-text">
+            <h1>{{ dino.nom }}</h1>
+            <p>{{dino.periodes.periode}}<p>
+            <p>{{ dino.types.type }}</p>
+            <p>{{dino.taille}}</p>
+            <p>{{dino.poid}}</p>
+            <p>{{dino.description}}</p>
+        </div>
+        }
+    </div>
+</div>

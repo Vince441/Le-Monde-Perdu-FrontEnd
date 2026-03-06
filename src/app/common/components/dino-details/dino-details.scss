@@ -1,0 +1,34 @@
+.main {
+    .container-dino-detail {
+        width: 90%;
+        height: 80%;
+        display: flex;
+        border: 1px solid red;
+        column-gap: 50px;
+        padding: 20px;
+
+        .bloc-image {
+            max-width: 80%;
+            display: flex;
+            align-items: center;
+
+            img {
+                max-width: 500px;
+                object-fit: contain;
+            }
+
+        }
+
+        .bloc-text {
+            h1 {
+                font-size: 60px;
+                margin: 0;
+                color: wheat;
+                text-transform: uppercase;
+                font-weight: 800;
+                transform: scaleY(1.75);
+            }
+        }
+    }
+
+}
