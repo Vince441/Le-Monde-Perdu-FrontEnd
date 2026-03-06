@@ -43,11 +43,10 @@ export class EspaceCreerCompte implements OnInit {
     this.authService.user$.subscribe(userDto => {
       if (userDto) {
 
-        // this.idUser = userDto.idUser;
-
-        this.authService.idUser
+        this.idUser = userDto;
 
 
+    
       } else {
         console.warn("Aucun user connecté");
       }
@@ -61,7 +60,7 @@ export class EspaceCreerCompte implements OnInit {
 
 
   modifierUtilisateur() {
-    console.warn(this.idUser);
+    console.warn('idUs',this.idUser);
 
     if (!this.idUser) {
       console.error('Impossible de modifier : id utilisateur manquant');
@@ -76,8 +75,8 @@ export class EspaceCreerCompte implements OnInit {
     this.userService.patchUser(this.idUser, update).subscribe({
       next: (updatedUser) => {
         console.log('Utilisateur modifié avec succès :', updatedUser);
-        // Mettre à jour le BehaviorSubject global si nécessaire
         this.userSubject.next(updatedUser);
+        this.router.navigate(['espace-utilisateur'])
       },
       error: (err) => {
         console.error('Erreur lors de la modification de l\'utilisateur :', err);
