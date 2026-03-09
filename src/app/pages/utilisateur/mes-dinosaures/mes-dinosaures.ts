@@ -1,36 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { Dinosaures } from '../../../models/Dinosaures/dinosaures.model';
 import { DinoService } from '../../../services/dino.service';
+import { AuthService } from '../../../services/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mes-dinosaures',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './mes-dinosaures.html',
   styleUrl: './mes-dinosaures.scss',
 })
 export class MesDinosaures implements OnInit {
-  dino?: Dinosaures; 
+  dino: Dinosaures[] = [];
   errorMessage?: string;
 
-  constructor(private dinosauresService: DinoService) {}
+  constructor(private readonly dinosauresService: DinoService, private readonly authService: AuthService) { }
 
-  ngOnInit(): void {
-    // Exemple : récupérer un dino avec son ID
-    this.getDinoById('937f9cfc-aed7-4f0b-b1bf-0c7fbdde288b');
+ngOnInit(): void {
 
-    
+  const userId = this.authService.idUser;
+
+  if (!userId) {
+    this.errorMessage = "Utilisateur non connecté";
+    return;
   }
+console.warn("userId envoyé :", userId);
+  this.dinosauresService.getUserDinos(userId).subscribe(r => {
+  console.warn("relations :", r);
 
-  getDinoById(id: string): void {
-    this.dinosauresService.getDino(id).subscribe({
-      next: (dino) => {
-        this.dino = dino;
-        console.log('Dinosaure récupéré :', this.dino);
-      },
-      error: (err) => {
-        this.errorMessage = 'Erreur lors de la récupération du dinosaure';
-        console.error(err);
-      }
+    r.forEach(rel => {
+      this.getDinoById(rel.idDinosaures);
     });
-  }
+
+  });
+
+}
+
+getDinoById(id: string): void {
+
+  console.warn("appel API dinosaure :", id);
+
+  this.dinosauresService.getDino(id).subscribe({
+    next: (dino) => {
+      console.warn("DINO RECU :", dino);
+      this.dino.push(dino);
+    },
+    error: (err) => {
+      console.error("Erreur API :", err);
+    }
+  });
+}
 }

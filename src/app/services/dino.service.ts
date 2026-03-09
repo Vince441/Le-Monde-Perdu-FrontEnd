@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dinosaures } from '../models/Dinosaures/dinosaures.model';
+import { Dinosaures, UtilisateurDinosaure } from '../models/Dinosaures/dinosaures.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,7 +13,13 @@ export class DinoService {
 
   constructor(private http: HttpClient) { }
 
-  getDino(id: string): Observable<Dinosaures> {
-  return this.http.get<Dinosaures>(`${this.FINAL_API}/${id}`);
+getDino(id: string) {
+  return this.http.get<Dinosaures>(`http://localhost:8080/dinosaures/${id}`);
+}
+
+getUserDinos(userId: string): Observable<UtilisateurDinosaure[]> {
+  return this.http.get<UtilisateurDinosaure[]>(
+    `http://localhost:8080/utilisateur-dinosaures/utilisateur/${userId}`
+  );
 }
 }

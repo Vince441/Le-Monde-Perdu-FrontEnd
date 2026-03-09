@@ -1,0 +1,22 @@
+<div class="main">
+    <div class="container-dino-detail">
+        @if(dino){
+        <div class="bloc-image">
+            <img src="{{dino.url}}" alt="{{dino.nom}}">
+        </div>
+        <div class="trait-vertical"></div>
+        <div class="bloc-text">
+            
+            <h1>{{ dino.nom }}</h1>
+            <p>Période : <span>{{dino.periodes.periode}}</span></p>
+            <p>Régime Alimentaire : <span>{{ dino.types.type }}</span></p>
+            <p>Tailles : <span>{{dino.taille}}</span></p>
+            <p>Poids : <span>{{dino.poid}}</span></p>
+            <p>Déscription : <span>{{dino.description}}</span></p>
+            
+        </div>
+        }
+    </div>
+     <a routerLink="/mes-dinosaures"><img src="/img/icone/bouton-retour.png" alt="Retour à ma liste de dinosaure"></a>
+    
+</div>

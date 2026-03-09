@@ -1,3 +1,19 @@
-@if(dino){
-    <img src="{{ dino.url }}">
-}
+<div class="main">
+    <div class="container-list-dino">
+        @for(d of dino; track $index){
+        <a class="card" [routerLink]="['/dinosaures', d.id]">
+
+            <div class="card">
+                <div class="bloc-nom">
+                    <p>{{d.nom}}</p>
+                </div>
+                <div class="bloc-img">
+                    <img src="{{d.url}}" alt="{{ d.nom}}">
+                </div>
+            </div>
+        </a>
+        }
+    </div>
+    <a routerLink="/espace-utilisateur"><img src="/img/icone/bouton-retour.png" alt="Retour à ma liste de dinosaure"></a>
+
+</div>
