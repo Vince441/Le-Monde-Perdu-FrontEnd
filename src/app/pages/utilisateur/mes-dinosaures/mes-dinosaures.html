@@ -1,15 +1,15 @@
 <div class="main">
     @for(d of dino; track $index){
-            <a class="card" [routerLink]="['/dinosaures', d.id]">
+    <a class="card" [routerLink]="['/dinosaures', d.id]">
 
-    <div class="card">
-        <div class="bloc-nom">
-            <p>{{d.nom}}</p>
+        <div class="card">
+            <div class="bloc-nom">
+                <p>{{d.nom}}</p>
+            </div>
+            <div class="bloc-img">
+                <img src="{{d.url}}" alt="{{ d.nom}}">
+            </div>
         </div>
-        <div class="bloc-img">
-            <img src="{{d.url}}" alt="{{ d.nom}}">
-        </div>
-    </div>
-            </a>
+    </a>
     }
 </div>

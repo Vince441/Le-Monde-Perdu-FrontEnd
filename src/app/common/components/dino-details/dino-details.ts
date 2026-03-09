@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DinoService } from '../../../services/dino.service';
 import { Dinosaures } from '../../../models/Dinosaures/dinosaures.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Periodes } from '../../../models/Dinosaures/periodes.model';
 import { Types } from '../../../models/Dinosaures/types.model';
 
 @Component({
   selector: 'app-dino-details',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dino-details.html',
   styleUrl: './dino-details.scss',
 })
