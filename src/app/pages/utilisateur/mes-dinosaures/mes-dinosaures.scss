@@ -1,46 +1,52 @@
 .main {
     gap: 50px;
-
-    a{
-        text-decoration: none;
-    .card {
-        width: 200px;
-        height: 275px;
+display: flex;
+flex-direction: column;
+    .container-list-dino {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 9px 9px 15px 5px #0000002d;
-        border: 1px solid wheat;
+        gap: 50px;
+        a {
+            text-decoration: none;
 
-        .bloc-img {
+            .card {
+                width: 200px;
+                height: 275px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 9px 9px 15px 5px #0000002d;
+                border: 1px solid wheat;
 
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+                .bloc-img {
 
-            img {
-                width: 150px;
-                height: 150px;
-                object-fit: contain;
-            }
-        }
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        object-fit: contain;
+                    }
+                }
 
 
 
-        .bloc-nom {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+                .bloc-nom {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
-            p {
-                font-size: 15px;
-                font-weight: 500;
-                color: wheat;
-                text-align: center;
+                    p {
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: wheat;
+                        text-align: center;
+                    }
+                }
             }
         }
     }
-}
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserDto } from '../models/utilisateur.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +25,8 @@ export class UserService {
     return this.http.patch<UserDto>(`${this.FINAL_API}/${id}/update`, update);
   }
 
+  getUser(id:string): Observable<UserDto>{
+    return this.http.get<UserDto>(`${this.FINAL_API}/${id}`);
+  }
 
 }

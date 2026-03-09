@@ -10,11 +10,11 @@ import { LocalStorageService } from './localstorage.service';
 })
 export class AuthService {
 
-  private API_URL = 'http://localhost:8080';
-  private URL_SERVICE = 'auth/login';
-  private FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
+  private readonly API_URL = 'http://localhost:8080';
+  private readonly URL_SERVICE = 'auth/login';
+  private readonly FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
 
-  private userSubject = new BehaviorSubject<any>(null);
+  private readonly userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
 
   constructor(private readonly http: HttpClient, private readonly localStorageService: LocalStorageService) {
@@ -23,7 +23,7 @@ export class AuthService {
     this.userSubject = new BehaviorSubject<string | null>(
       storedIdUser ? storedIdUser : null
     );
-    this.user$ = this.userSubject.asObservable();
+    this.user$ = this.userSubject.asObservable();    
   }
 
   get idUser(): string | null {
