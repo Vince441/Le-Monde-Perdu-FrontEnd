@@ -57,6 +57,8 @@ export class UpdateInformation implements OnInit {
         console.log('Utilisateur modifié avec succès :', updatedUser);
         this.userSubject.next(updatedUser);
         this.router.navigate(['espace-utilisateur'])
+        console.warn('d', this.user.email);
+        
       },
       error: (err) => {
         console.error('Erreur lors de la modification de l\'utilisateur :', err);
