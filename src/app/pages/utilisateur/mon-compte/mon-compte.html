@@ -1,1 +1,39 @@
-<p>mon-compte works!</p>
+<div class="main">
+    <div class="container-champ-form">
+        <h1>Modifier mes informations</h1>
+        <fieldset>
+            <legend>Mes informations</legend>
+            <div class="container-mes-infos-modif">
+                <div class="container-mes-infos">
+
+                    @if(!isUpdateInformation){
+                    <h2>Civilité</h2>
+                    <div class="app-info">
+                        <app-display-information [user]="user"
+                            class="app-display-information"></app-display-information>
+                        <div class="container-modif">
+                            <button type="button" (click)="isUpdate()">
+                                Modifier mes informations
+                            </button>
+                        </div>
+                    </div>
+                    }@else{
+                    <h2>Civilité</h2>
+                    <div class="app-info">
+                        <app-update-information [user]="user" class="app-display-information"></app-update-information>
+                        <div class="container-modif">
+                            <button type="button" (click)="isUpdate()">
+                                Retour à mes informations
+                            </button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+
+        </fieldset>
+    </div>
+         <a routerLink="/espace-utilisateur"><img src="/img/icone/bouton-retour.png" alt="Retour à ma liste de dinosaure"></a>
+
+</div>

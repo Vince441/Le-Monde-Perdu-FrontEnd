@@ -1,0 +1,16 @@
+@if(user){
+@if(user.genre === "1"){
+<div class="btn">Monsieur</div>
+}@else if (user.genre === "2") {
+<div class="btn">Madame</div>
+}@else{
+<div class="btn">Non-genré</div>
+}
+
+<div class="trait-vertical"></div>
+<h2>Pseudo</h2>
+<p>{{user.pseudo}}</p>
+<div class="trait-vertical"></div>
+<h2>Email</h2>
+<p>{{user.email}}</p>
+}

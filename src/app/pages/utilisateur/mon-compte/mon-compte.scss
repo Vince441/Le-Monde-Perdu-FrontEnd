@@ -1,0 +1,78 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    .container-champ-form {
+        width: 50%;
+
+        h1 {
+            font-size: 35px;
+            color: white;
+        }
+
+        fieldset {
+            padding: 10px;
+            min-height: 300px;
+
+            legend {
+                font-size: 20px;
+                color: wheat;
+                padding: 5px;
+            }
+        }
+
+        .container-mes-infos-modif {
+            width: 100%;
+
+
+            .container-mes-infos {
+                width: 100%;
+
+                h2 {
+                    font-size: 16px;
+                    color: wheat;
+                    font-weight: 600;
+                }
+
+                .app-info {
+                    display: flex;
+                    width: 100%;
+                    column-gap: 80px;
+
+                    .app-display-information {
+                        width: 50%;
+                    }
+                }
+
+            }
+
+            .container-modif {
+                display: flex;
+                justify-content: center;
+                width: 50%;
+
+                button {
+                    border-radius: 0;
+                    width: 100%;
+                    height: 40px;
+                    background-color: wheat;
+                    color: black;
+                    border: 1px solid transparent;
+                    padding: 10px;
+                    cursor: pointer;
+
+
+
+                    &:hover {
+                        background-color: #00000000;
+                        border: 1px solid wheat;
+                        color: wheat;
+                        transition: all 0.5s ease-in-out;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
