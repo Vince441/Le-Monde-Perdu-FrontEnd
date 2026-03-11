@@ -18,7 +18,7 @@ export class EspaceCreerCompte implements OnInit {
   form!: FormGroup
   userDto: UserDto | null = null;
   idUser!: '';
-  private userSubject = new BehaviorSubject<UserDto | null>(null);
+  private readonly userSubject = new BehaviorSubject<UserDto | null>(null);
   user$ = this.userSubject.asObservable();
 
 
@@ -72,7 +72,7 @@ export class EspaceCreerCompte implements OnInit {
       genre: this.form.get('genre')?.value
     };
 
-    this.userService.patchUser(this.idUser, update).subscribe({
+    this.userService.patchUserCreer(this.idUser, update).subscribe({
       next: (updatedUser) => {
         console.log('Utilisateur modifié avec succès :', updatedUser);
         this.userSubject.next(updatedUser);

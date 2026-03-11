@@ -8,9 +8,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UserService {
 
-  private API_URL = 'http://localhost:8080';
-  private URL_SERVICE = 'utilisateur';
-  private FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
+  private readonly API_URL = 'http://localhost:8080';
+  private readonly URL_SERVICE = 'utilisateur';
+  private readonly FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
 
   constructor(private http: HttpClient) { }
 
@@ -21,12 +21,17 @@ export class UserService {
     return this.http.post<UserDto>(this.FINAL_API, userDto);
   }
 
-  patchUser(id: string, update: Partial<UserDto>): Observable<UserDto> {
+  patchUserCreer(id: string, update: Partial<UserDto>): Observable<UserDto> {
     return this.http.patch<UserDto>(`${this.FINAL_API}/${id}/update`, update);
   }
 
   getUser(id:string): Observable<UserDto>{
     return this.http.get<UserDto>(`${this.FINAL_API}/${id}`);
   }
+
+  patchUser(id: string, update: Partial<UserDto>): Observable<UserDto>{
+    return this.http.patch<UserDto>(`${this.FINAL_API}/${id}/updateUtilisateur`, update)
+  }
+  
 
 }
