@@ -22,7 +22,7 @@ export class UserService {
   }
 
   patchUserCreer(id: string, update: Partial<UserDto>): Observable<UserDto> {
-    return this.http.patch<UserDto>(`${this.FINAL_API}/${id}/update`, update);
+    return this.http.patch<UserDto>(`${this.FINAL_API}/${id}/cree-compte`, update);
   }
 
   getUser(id:string): Observable<UserDto>{

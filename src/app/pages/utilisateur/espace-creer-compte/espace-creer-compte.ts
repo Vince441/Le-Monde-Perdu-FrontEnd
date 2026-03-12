@@ -40,10 +40,11 @@ export class EspaceCreerCompte implements OnInit {
 
 
   ngOnInit() {
-    this.authService.user$.subscribe(userDto => {
-      if (userDto) {
+    this.authService.user$.subscribe(userId => {
+      if (userId) {
 
-        this.idUser = userDto;
+        this.idUser = userId;
+
 
 
     
@@ -80,6 +81,9 @@ export class EspaceCreerCompte implements OnInit {
       },
       error: (err) => {
         console.error('Erreur lors de la modification de l\'utilisateur :', err);
+         console.error('Erreur complète :', err);
+  console.error('Status :', err.status);
+  console.error('Message :', err.message);
       }
     });
   }

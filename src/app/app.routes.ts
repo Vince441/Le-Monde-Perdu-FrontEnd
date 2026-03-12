@@ -17,8 +17,13 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     {
-        path:'mon-compte',
-        loadComponent: () => import('./pages/utilisateur/mon-compte/mon-compte').then(m => m.MonCompte ),
+        path: 'mon-compte',
+        loadComponent: () => import('./pages/utilisateur/mon-compte/mon-compte').then(m => m.MonCompte),
+        canActivate: [authGuard]
+    },
+    {
+        path: 'ma boutique',
+        loadComponent: () => import('./pages/utilisateur/ma-boutique/ma-boutique').then(m => m.MaBoutique),
         canActivate: [authGuard]
     },
     {

@@ -3,6 +3,7 @@ import { Dinosaures } from '../../../models/Dinosaures/dinosaures.model';
 import { DinoService } from '../../../services/dino.service';
 import { AuthService } from '../../../services/auth.service';
 import { RouterLink } from '@angular/router';
+import { UtilisateurDinosaureService } from '../../../services/UtilisateurDinosaure.service';
 
 @Component({
   selector: 'app-mes-dinosaures',
@@ -14,7 +15,9 @@ export class MesDinosaures implements OnInit {
   dino: Dinosaures[] = [];
   errorMessage?: string;
 
-  constructor(private readonly dinosauresService: DinoService, private readonly authService: AuthService) { }
+  constructor(private readonly utilisateurDinosaureService: UtilisateurDinosaureService,
+    private readonly dinosauresService : DinoService,
+    private readonly authService: AuthService) { }
 
 ngOnInit(): void {
 
@@ -25,7 +28,7 @@ ngOnInit(): void {
     return;
   }
 console.warn("userId envoyé :", userId);
-  this.dinosauresService.getUserDinos(userId).subscribe(r => {
+  this.utilisateurDinosaureService.getUserDinos(userId).subscribe(r => {
   console.warn("relations :", r);
 
     r.forEach(rel => {
