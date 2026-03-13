@@ -22,7 +22,7 @@ export const routes: Routes = [
         canActivate: [authGuard]
     },
     {
-        path: 'ma boutique',
+        path: 'ma-boutique',
         loadComponent: () => import('./pages/utilisateur/ma-boutique/ma-boutique').then(m => m.MaBoutique),
         canActivate: [authGuard]
     },

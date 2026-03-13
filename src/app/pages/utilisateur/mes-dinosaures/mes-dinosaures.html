@@ -10,10 +10,31 @@
                 <div class="bloc-img">
                     <img src="{{d.url}}" alt="{{ d.nom}}">
                 </div>
+                @if(dinoStat){
+
+
+                <div class="niveau">
+                    <p>Niveau : <span>{{dinoStat.niveau}}</span> </p>
+                </div>
+                <div class="stats">
+<div class="stats1">
+                    <p>Attaque : <span>{{dinoStat.attaque}}</span> </p>
+                    <p>Resistance physique : <span>{{dinoStat.resistancePhysique}}</span> </p>
+                    <p>Coup Critique : <span>{{dinoStat.chanceCritique}}% </span> </p>
+</div>
+<div class="stats2">
+                    <p>Faiblesse : <span>{{dinoStat.idFaiblesse.type}}</span> </p>
+                    <p>Resistance : <span>{{dinoStat.idResistance.type}}</span> </p>
+                    <p>Force : <span>{{dinoStat.idForce.type}}</span> </p>
+</div>
+                </div>
+                }
+
             </div>
         </a>
         }
     </div>
-    <a routerLink="/espace-utilisateur"><img src="/img/icone/bouton-retour.png" alt="Retour à ma liste de dinosaure"></a>
+    <a routerLink="/espace-utilisateur"><img src="/img/icone/bouton-retour.png"
+            alt="Retour à ma liste de dinosaure"></a>
 
 </div>
