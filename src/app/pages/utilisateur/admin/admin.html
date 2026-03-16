@@ -1,0 +1,46 @@
+<div class="main">
+    <form [formGroup]="form">
+        <div class="form-input">
+            <Label>Nom du Dinosaure</Label>
+
+            <input formControlName="nom">
+        </div>
+
+        <div class="form-input">
+            <Label>Type du Dinosaure</Label>
+            <input formControlName="type">
+        </div>
+
+        <div class="form-input">
+            <Label>Période du Dinosaure</Label>
+            <input formControlName="periode">
+        </div>
+
+        <div class="form-input">
+            <label>Poid du Dinoosaure</label>
+            <input formControlName="poids">
+        </div>
+
+        <div class="form-input">
+            <label>Taille du Dinosaure</label>
+            <input formControlName="taille">
+        </div>
+
+        <div class="form-input">
+            <label>Description du Dinosaure</label>
+            <input formControlName="description">
+        </div>
+
+        <div class="form-input">
+            <label>Url de l'image du Dinosaure</label>
+            <input formControlName="url">
+        </div>
+
+        <div class="form-input">
+            <label>Code du Dinosaure</label>
+            <input formControlName="code">
+        </div>
+
+        <button type="submit" (click)="postDinosaure()"></button>
+    </form>
+</div>

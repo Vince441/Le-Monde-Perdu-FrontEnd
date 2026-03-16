@@ -79,5 +79,9 @@ export class AuthService {
     return this.userSubject.value !== null;
   }
 
+    getUserRole() {
+    return this.userSubject.value?.role || null;
+  }
+
 
 }

@@ -38,10 +38,6 @@ export class Accueil {
 
   }
 
-
-
-
-
   enregistrerUser() {
     if (this.form.valid) {
 

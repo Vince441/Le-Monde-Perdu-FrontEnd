@@ -4,4 +4,11 @@ export interface UserDto {
     password : string;
     pseudo?: string;
     genre?: string;
+    role : Role;
+}
+
+
+export enum Role {
+  USER = 'USER',
+  ADMIN = 'ADMIN'
 }

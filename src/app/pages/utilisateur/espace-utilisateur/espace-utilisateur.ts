@@ -11,7 +11,7 @@ import { UserService } from '../../../services/user.service';
   styleUrl: './espace-utilisateur.scss',
 })
 export class EspaceUtilisateur implements OnInit {
-  user!: UserDto;
+  user: UserDto | null = null;
 
 
   constructor(
@@ -22,11 +22,12 @@ export class EspaceUtilisateur implements OnInit {
 
   ngOnInit() {
     this.authService.user$.subscribe(u => {
-      if(u){
-        this.userService.getUser(u).subscribe(user =>{
+      if (u) {
+        this.userService.getUser(u).subscribe(user => {
           this.user = user
-          console.warn('user', this.user);
-          
+          if (this.user?.role === 'ADMIN') return
+
+
         })
       }
 

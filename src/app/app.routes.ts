@@ -30,6 +30,10 @@ export const routes: Routes = [
         path: 'mes-dinosaures',
         loadComponent: () => import('./pages/utilisateur/mes-dinosaures/mes-dinosaures').then(m => m.MesDinosaures),
         canActivate: [authGuard]
+    }, {
+        path: 'Admin',
+        loadComponent: () => import('./pages/utilisateur/admin/admin').then(m => m.Admin),
+        canActivate: [authGuard]
     },
     {
         path: 'dinosaures/:id',

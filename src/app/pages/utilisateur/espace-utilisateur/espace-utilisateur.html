@@ -18,6 +18,9 @@
             <li><a href="#">
                     <p>Espace Combat</p>
                 </a></li>
+             @if(user?.role === 'ADMIN'){   
+            <li><a routerLink="/Admin"><p>ADMIN BOARD</p></a></li>   
+             } 
         </ul>
     </div>
 
