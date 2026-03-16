@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { UserDto } from '../../models/utilisateur.model';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-accueil',
-  imports: [ReactiveFormsModule
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './accueil.html',
   styleUrl: './accueil.scss',
 })
@@ -18,7 +17,7 @@ export class Accueil {
   form!: FormGroup
   userDto!: UserDto;
   isActive: boolean = false;
-  private userSubject = new BehaviorSubject<any>(null);
+  private readonly userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
   pseudo!: string;
   userEmail: string | undefined;

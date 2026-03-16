@@ -10,4 +10,5 @@ export interface Dinosaures {
     poid: string;
     description: string;
     url:string
+    code : string;
 }

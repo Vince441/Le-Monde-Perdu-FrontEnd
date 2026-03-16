@@ -12,17 +12,19 @@ export class UtilisateurDinosaureService {
   private readonly FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
 
 
-  constructor(private readonly http: HttpClient){}
+  constructor(private readonly http: HttpClient) { }
 
   getUserDinos(userId: string): Observable<UtilisateurDinosaure[]> {
-  return this.http.get<UtilisateurDinosaure[]>(
-    `http://localhost:8080/utilisateur-dinosaures/utilisateur/${userId}`
-  );
-}
+    return this.http.get<UtilisateurDinosaure[]>(
+      `http://localhost:8080/utilisateur-dinosaures/utilisateur/${userId}`
+    );
+  }
 
-postUtilsateurDinosaureByCode(utilisateurDinosaure : UtilisateurDinosaure): Observable<UtilisateurDinosaure>{
-  return this.http.post<UtilisateurDinosaure>(this.FINAL_API, utilisateurDinosaure);
-}
-
+  postUtilsateurDinosaureByCode(code: string, idUser: string) {
+    return this.http.post<UtilisateurDinosaure>(
+      `${this.FINAL_API}?code=${code}&idUser=${idUser}`,
+      {}
+    );
+  }
 
 }
