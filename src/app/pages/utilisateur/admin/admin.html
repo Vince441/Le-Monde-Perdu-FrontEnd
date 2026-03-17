@@ -8,17 +8,29 @@
 
         <div class="form-input">
             <Label>Type du Dinosaure</Label>
-            <input formControlName="type">
+            <select formControlName="type">
+                <option value="">--Veuillez choisir une option--</option>
+                @for(t of typesDinosaures; track $index){
+                <option [value]="t.id">{{t.type}}</option>
+                }
+            </select>
         </div>
 
         <div class="form-input">
             <Label>Période du Dinosaure</Label>
-            <input formControlName="periode">
+
+            <select formControlName="periode">
+                <option value="">--Veuillez choisir une option--</option>
+                @for(p of periodesDinosaures; track $index){
+                <option [value]="p.id">{{p.periode}}</option>
+                }
+            </select>
+
         </div>
 
         <div class="form-input">
             <label>Poid du Dinoosaure</label>
-            <input formControlName="poids">
+            <input formControlName="poid">
         </div>
 
         <div class="form-input">
@@ -28,7 +40,7 @@
 
         <div class="form-input">
             <label>Description du Dinosaure</label>
-            <input formControlName="description">
+            <textarea formControlName="description" maxlength="255"></textarea>
         </div>
 
         <div class="form-input">
@@ -41,6 +53,6 @@
             <input formControlName="code">
         </div>
 
-        <button type="submit" (click)="postDinosaure()"></button>
+        <button type="button" (click)="postDinosaure()"> Créer le dinosaure 🦖</button>
     </form>
 </div>

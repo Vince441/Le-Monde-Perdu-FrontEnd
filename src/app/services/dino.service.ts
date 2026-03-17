@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Dinosaures } from '../models/Dinosaures/dinosaures.model';
 import { HttpClient } from '@angular/common/http';
+import { Types } from '../models/Dinosaures/types.model';
+import { Periodes } from '../models/Dinosaures/periodes.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +17,18 @@ export class DinoService {
 
 getDino(id: string) {
   return this.http.get<Dinosaures>(`${this.FINAL_API}/${id}`);
+}
+
+getType(): Observable<Types[]>{
+  return this.http.get<Types[]>(`${this.FINAL_API}/type-dinosaure`);
+}
+
+getPeriode(): Observable<Periodes[]>{
+  return this.http.get<Periodes[]>(`${this.FINAL_API}/periode-dinosaure`);
+}
+
+postDino(dino:Dinosaures): Observable<Dinosaures>{
+  return this.http.post<Dinosaures>(`${this.FINAL_API}`, dino)
 }
 
 
