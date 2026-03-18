@@ -2,18 +2,17 @@
     <form [formGroup]="form">
         <div class="form-1">
             <div class="form-input">
-
                 <Label>Nom du Dinosaure</Label>
 
-                <input formControlName="nom">
+                <input formControlName="nom" />
             </div>
 
             <div class="form-input">
                 <Label>Type du Dinosaure</Label>
                 <select formControlName="types">
                     <option value="">--Veuillez choisir une option--</option>
-                    @for(t of typesDinosaures; track $index){
-                    <option [value]="t.id">{{t.type}}</option>
+                    @for (t of typesDinosaures; track $index) {
+                    <option [value]="t.id">{{ t.type }}</option>
                     }
                 </select>
             </div>
@@ -23,21 +22,20 @@
 
                 <select formControlName="periodes">
                     <option value="">--Veuillez choisir une option--</option>
-                    @for(p of periodesDinosaures; track $index){
-                    <option [value]="p.id">{{p.periode}}</option>
+                    @for (p of periodesDinosaures; track $index) {
+                    <option [value]="p.id">{{ p.periode }}</option>
                     }
                 </select>
-
             </div>
 
             <div class="form-input">
-                <label>Poid du Dinoosaure</label>
-                <input formControlName="poid">
+                <label>Poid du Dinosaure</label>
+                <input formControlName="poid" />
             </div>
 
             <div class="form-input">
                 <label>Taille du Dinosaure</label>
-                <input formControlName="taille">
+                <input formControlName="taille" />
             </div>
         </div>
         <div class="form-2">
@@ -46,17 +44,18 @@
                 <textarea formControlName="description" maxlength="255"></textarea>
             </div>
 
-            <div class="form-input" >
+            <div class="form-input" id="form-input-1">
                 <label>Url de l'image du Dinosaure</label>
-                <input formControlName="url" id="input-1">
+                <input formControlName="url" id="input-1" />
             </div>
 
-            <div class="form-input" >
+            <div class="form-input" id="form-input-2">
                 <label>Code du Dinosaure</label>
-                <input formControlName="code" id="input-2">
+                <input formControlName="code" id="input-2" />
             </div>
-                    <button type="button" (click)="postDinosaure()"> Créer le dinosaure 🦖</button>
+            <button type="button" (click)="postDinosaure()">Créer le dinosaure 🦖</button>
         </div>
-
     </form>
+    <a routerLink="/espace-utilisateur"><img src="/img/icone/bouton-retour.png"
+            alt="Retour à ma liste de dinosaure" /></a>
 </div>

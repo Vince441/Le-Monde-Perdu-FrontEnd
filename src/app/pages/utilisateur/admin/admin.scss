@@ -1,13 +1,28 @@
 .main {
+    flex-direction: column;
+    gap: 50px;
     form {
         display: flex;
-        width: 60%;
-.form-1{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+        width: 50%;
+
+        .form-1 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-2 {
+            #form-input-1 {
+                width: 90%;
+            }
+
+            #form-input-2 {
+                width: 90%;
+            }
+        }
+
         .form-input {
             display: flex;
             flex-direction: column;
@@ -27,18 +42,19 @@
                 padding: 5px 5px 5px 10px;
             }
 
-
-            #input-1{
+            #input-1 {
                 width: 100%;
             }
 
-            #input-2{
+            #input-2 {
                 width: 100%;
             }
+
             textarea {
                 height: 200px;
                 width: 500px;
                 resize: none;
+                padding: 5px;
             }
 
             select {
@@ -48,9 +64,13 @@
                 padding: 5px 5px 5px 10px;
             }
         }
-                    button{
-                height: 50px;
-            }
+
+        button {
+            width: 50%;
+            height: 50px;
+            border-radius: 50px;
+            border: none;
+        }
 
 
     }

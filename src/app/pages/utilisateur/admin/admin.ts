@@ -5,10 +5,11 @@ import { Types } from '../../../models/Dinosaures/types.model';
 import { forkJoin } from 'rxjs';
 import { Periodes } from '../../../models/Dinosaures/periodes.model';
 import { Dinosaures, PostDinosauresAdmin } from '../../../models/Dinosaures/dinosaures.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './admin.html',
   styleUrl: './admin.scss',
 })
