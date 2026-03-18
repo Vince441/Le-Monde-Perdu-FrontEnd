@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dinosaures } from '../models/Dinosaures/dinosaures.model';
+import { Dinosaures, PostDinosauresAdmin } from '../models/Dinosaures/dinosaures.model';
 import { HttpClient } from '@angular/common/http';
 import { Types } from '../models/Dinosaures/types.model';
 import { Periodes } from '../models/Dinosaures/periodes.model';
@@ -27,8 +27,8 @@ getPeriode(): Observable<Periodes[]>{
   return this.http.get<Periodes[]>(`${this.FINAL_API}/periode-dinosaure`);
 }
 
-postDino(dino:Dinosaures): Observable<Dinosaures>{
-  return this.http.post<Dinosaures>(`${this.FINAL_API}`, dino)
+postDino(dino:PostDinosauresAdmin): Observable<PostDinosauresAdmin>{
+  return this.http.post<PostDinosauresAdmin>(`${this.FINAL_API}`, dino)
 }
 
 

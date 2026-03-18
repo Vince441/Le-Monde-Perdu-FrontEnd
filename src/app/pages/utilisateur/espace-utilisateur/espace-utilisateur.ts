@@ -26,8 +26,8 @@ export class EspaceUtilisateur implements OnInit {
         this.userService.getUser(u).subscribe(user => {
           this.user = user
           if (this.user?.role === 'ADMIN') return
-
-
+          console.warn(this.user.role);
+          
         })
       }
 

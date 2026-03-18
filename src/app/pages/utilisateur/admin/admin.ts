@@ -4,7 +4,7 @@ import { DinoService } from '../../../services/dino.service';
 import { Types } from '../../../models/Dinosaures/types.model';
 import { forkJoin } from 'rxjs';
 import { Periodes } from '../../../models/Dinosaures/periodes.model';
-import { Dinosaures } from '../../../models/Dinosaures/dinosaures.model';
+import { Dinosaures, PostDinosauresAdmin } from '../../../models/Dinosaures/dinosaures.model';
 
 @Component({
   selector: 'app-admin',
@@ -17,7 +17,7 @@ export class Admin implements OnInit {
 
   form!: FormGroup;
 
-  dinosaure!: Dinosaures;
+  dinosaure!: PostDinosauresAdmin;
   typesDinosaures!: Types[];
   periodesDinosaures!: Periodes[];
 
@@ -25,9 +25,9 @@ export class Admin implements OnInit {
 
     this.form = this.fb.group({
       nom: ['', Validators.required],
-      type: [''],
-      periode: [''],
-      tailles: ['', Validators.required],
+      types: [''],
+      periodes: [''],
+      taille: ['', Validators.required],
       poid: ['', Validators.required],
       description: ['', Validators.required],
       url: ['', Validators.required],

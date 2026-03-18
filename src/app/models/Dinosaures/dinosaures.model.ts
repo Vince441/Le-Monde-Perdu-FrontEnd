@@ -12,3 +12,15 @@ export interface Dinosaures {
     url:string
     code : string;
 }
+
+export interface PostDinosauresAdmin {
+    id: string;
+    nom: string;
+    periodes: number;
+    types: number;
+    taille: string;
+    poid: string;
+    description: string;
+    url:string
+    code : string;
+}
