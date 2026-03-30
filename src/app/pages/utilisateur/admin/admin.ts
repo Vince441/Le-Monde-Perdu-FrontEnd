@@ -31,7 +31,6 @@ export class Admin implements OnInit {
       poid: ['', Validators.required],
       description: ['', Validators.required],
       url: ['', Validators.required],
-      code: ['', Validators.required]
     })
   }
 
@@ -44,8 +43,6 @@ export class Admin implements OnInit {
       next: ({ types, periodes }) => {
         this.typesDinosaures = types
         this.periodesDinosaures = periodes
-        console.warn(types);
-        
       },
       error: (err) => {
         console.error('Erreur lors de la récupération du type:', err);
