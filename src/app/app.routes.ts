@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
     {
@@ -31,14 +32,18 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/utilisateur/mes-dinosaures/mes-dinosaures').then(m => m.MesDinosaures),
         canActivate: [authGuard]
     }, {
-        path: 'Admin',
+        path: 'admin',
         loadComponent: () => import('./pages/utilisateur/admin/admin').then(m => m.Admin),
-        canActivate: [authGuard]
+        canActivate: [adminGuard]
     },
     {
         path: 'dinosaures/:id',
         loadComponent: () => import('./common/components/dino-details/dino-details').then(m => m.DinoDetails),
         canActivate: [authGuard]
+    },
+    {
+        path:'unauthorized',
+        loadComponent: () => import('./common/components/acces-denied/acces-denied').then(m => m.AccesDenied)
     },
     {
         path: '',
