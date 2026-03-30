@@ -17,30 +17,18 @@ export class MonCompte implements OnInit {
   user!: UserDto;
   isUpdateInformation: boolean = false;
 
-  constructor(private readonly authService: AuthService, private readonly userService: UserService, private readonly fb: FormBuilder,) {
-
-
-
-  }
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit() {
     this.authService.user$.subscribe(u => {
       if (u) {
-        this.userService.getUser(u).subscribe(user => {
-          this.user = user
-          console.warn('user', this.user);
-
-        })
+        this.user = u; // user complet déjà disponible
+        console.warn('user', this.user);
       }
-
-    })
+    });
   }
-
-
 
   isUpdate() {
     this.isUpdateInformation = !this.isUpdateInformation;
   }
-
-
 }

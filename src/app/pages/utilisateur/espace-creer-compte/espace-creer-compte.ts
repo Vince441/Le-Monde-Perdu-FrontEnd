@@ -17,7 +17,7 @@ export class EspaceCreerCompte implements OnInit {
 
   form!: FormGroup
   userDto: UserDto | null = null;
-  idUser!: '';
+  idUser: string | null = null;
   private readonly userSubject = new BehaviorSubject<UserDto | null>(null);
   user$ = this.userSubject.asObservable();
 
@@ -39,20 +39,20 @@ export class EspaceCreerCompte implements OnInit {
 
 
 
-  ngOnInit() {
-    this.authService.user$.subscribe(userId => {
-      if (userId) {
+ngOnInit() {
+  this.authService.user$.subscribe(user => {
+    if (user) {
+      this.idUser = user.idUser;
+      console.warn("Utilisateur connecté :", user);
 
-        this.idUser = userId;
 
 
-
-    
-      } else {
-        console.warn("Aucun user connecté");
-      }
-    });
-  }
+    } else {
+      console.warn("Aucun utilisateur connecté");
+      this.idUser = null;
+    }
+  });
+}
 
 
   setGenre(value: string) {

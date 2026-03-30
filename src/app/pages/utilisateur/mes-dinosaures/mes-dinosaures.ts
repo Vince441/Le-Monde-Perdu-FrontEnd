@@ -25,23 +25,23 @@ export class MesDinosaures implements OnInit {
     private readonly authService: AuthService) { }
 
 ngOnInit(): void {
+  this.authService.user$.subscribe(user => {
+    if (!user) {
+      this.errorMessage = "Utilisateur non connecté";
+      return;
+    }
 
-  const userId = this.authService.idUser;
+    const userId = user.idUser;
+    console.warn("userId envoyé :", userId);
 
-  if (!userId) {
-    this.errorMessage = "Utilisateur non connecté";
-    return;
-  }
-console.warn("userId envoyé :", userId);
-  this.utilisateurDinosaureService.getUserDinos(userId).subscribe(r => {
-  console.warn("relations :", r);
+    this.utilisateurDinosaureService.getUserDinos(userId).subscribe(r => {
+      console.warn("relations :", r);
 
-    r.forEach(rel => {
-      this.getDinoById(rel.idDinosaures);
+      r.forEach(rel => {
+        this.getDinoById(rel.idDinosaures);
+      });
     });
-
   });
-
 }
 
 getDinoById(id: string): void {

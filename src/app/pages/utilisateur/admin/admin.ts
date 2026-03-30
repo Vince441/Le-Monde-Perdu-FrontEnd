@@ -44,6 +44,8 @@ export class Admin implements OnInit {
       next: ({ types, periodes }) => {
         this.typesDinosaures = types
         this.periodesDinosaures = periodes
+        console.warn("t", types);
+        
       },
       error: (err) => {
         console.error('Erreur lors de la récupération du type:', err);

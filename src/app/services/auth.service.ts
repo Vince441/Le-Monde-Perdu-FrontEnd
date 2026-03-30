@@ -14,31 +14,38 @@ export class AuthService {
   private readonly URL_SERVICE = 'auth/login';
   private readonly FINAL_API = `${this.API_URL}/${this.URL_SERVICE}`;
 
-  private readonly userSubject = new BehaviorSubject<any>(null);
+  private readonly userSubject = new BehaviorSubject<UserDto | null>(null);
   user$ = this.userSubject.asObservable();
 
   constructor(private readonly http: HttpClient, private readonly localStorageService: LocalStorageService) {
-
-    const storedIdUser = localStorage.getItem('idUser');
-    this.userSubject = new BehaviorSubject<string | null>(
-      storedIdUser ? storedIdUser : null
-    );
-    this.user$ = this.userSubject.asObservable();    
-  }
-
-  get idUser(): string | null {
-    return this.userSubject.value;
-  }
-
-  set idUser(value: string | null) {
-    if (value) {
-      this.localStorageService.setItem('idUser', value);
-    } else {
-      this.localStorageService.removeItem('idUser');
+    // Restaurer l'utilisateur depuis localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.userSubject.next(JSON.parse(storedUser));
     }
-    this.userSubject.next(value);
   }
 
+  login(credentials: { user: UserDto }) {
+    return this.http.post<TokenDto>(`${this.FINAL_API}`, credentials)
+      .pipe(
+        tap(res => {
+          this.token = res.token;
+          if (res.userDto) {
+            this.userSubject.next(res.userDto);
+            this.localStorageService.setItem('idUser', JSON.stringify(res.userDto.idUser));
+          }
+        })
+      );
+  }
+
+  logout() {
+    this.localStorageService.clear();
+    this.userSubject.next(null);
+  }
+
+  isLoggedIn(): boolean {
+    return this.userSubject.value !== null;
+  }
 
   get token(): string | null {
     return this.localStorageService.getItem('token');
@@ -52,36 +59,8 @@ export class AuthService {
     }
   }
 
-
-  login(credentials: { user: UserDto }) {
-    return this.http.post<TokenDto>(`${this.FINAL_API}`, credentials)
-      .pipe(
-        tap(res => {
-          this.token = res.token
-          if (res.userDto?.idUser) {
-            // this.setUserId(res.userDto.idUser)
-
-            this.idUser = res.userDto.idUser;
-            this.userSubject.next(res.userDto.idUser);
-          }
-        })
-      );
-  }
-
-
-  logout() {
-    this.localStorageService.clear;
-    this.userSubject.next(null);
-  }
-
-
-  isLoggedIn(): boolean {
-    return this.userSubject.value !== null;
-  }
-
-    getUserRole() {
+  getUserRole(): string | null {
     return this.userSubject.value?.role || null;
   }
-
 
 }
